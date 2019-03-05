@@ -1,0 +1,9 @@
+.Character-searcher {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Get-button {
+    margin: 10px !important; /* important b/c semantic-ui overrides this for some reason */
+}
