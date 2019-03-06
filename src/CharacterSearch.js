@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Input, Button } from 'semantic-ui-react'
+import { Input, Button, Icon } from 'semantic-ui-react'
 import axios from 'axios'
 
 import CharacterList from './CharList';
@@ -12,19 +12,26 @@ const PUBLIC_KEY = "143409854ea7dad3962b62316a567d0d";
 const LIMIT = 100;
 
 
+/**
+ * TODO: 1. add sort by feature in list view
+ *       2. sort descending or ascending 
+ *       3. probably stop using the shouldGET optimization
+ *       4. add gallery view
+ * 
+ */
+
 /** This class will handle API calls to GET Pokemon info */
 export class CharacterSearch extends Component {
 
   constructor(props) {
     super(props);
-    
-    this.state = {
-        name: "",
-        results: [],
-        fieldValue: ""
-    }
 
-    this.shouldGET = true;
+    this.state = {
+      name: "",
+      results: [],
+      fieldValue: "",
+      sortAscending: true /** When sortAscending false, we sort by descending */
+    }
   }
 
   getInfo = () => {
@@ -37,7 +44,7 @@ export class CharacterSearch extends Component {
       }
 
       // console.log(res.data.data.results);
-      this.setState({ 
+      this.setState({
         results: res.data.data.results
       })
     }).catch(err => {
@@ -46,22 +53,53 @@ export class CharacterSearch extends Component {
   }
 
   onChangeHandler = (event) => {
-    this.setState({ 
-      fieldValue: event.target.value 
+    this.setState({
+      fieldValue: event.target.value
     }, () => {
       if (this.state.fieldValue && this.state.fieldValue.length > 0) {
         if (this.shouldGET) {
           this.getInfo();
         } else {
           // Filter old results for starting with the new search string
-          const newResults = this.state.results.filter(char => char.name.toLowerCase().
-                                  startsWith(this.state.fieldValue.toLowerCase()));
+          const newResults = this.state.results.filter(char => {
+            return char.name.toLowerCase().startsWith(this.state.fieldValue.toLowerCase());
+          });
           this.setState({
             results: newResults
           })
         }
       }
     });
+  }
+
+  doSort = isAscending => {
+    if (isAscending === this.state.sortAscending) {
+      return;
+    } else if (isAscending === false) {
+      this.setState({
+        sortAscending: false
+      })
+    } else if (isAscending === true) {
+      this.setState({
+        sortAscending: true
+      })
+    } else {
+      console.log('error: contact author');
+    }
+  }
+
+  onClickHandler = event => {
+    /** React UI elements handle onclick differently than normal JS, hence the this.as */
+    if (event.currentTarget.className === 'ui icon button') { 
+      const command = event.currentTarget.firstChild.className; 
+      console.log(command);
+      if (command === 'sort amount up icon') {
+        this.doSort(true);
+      } else if (command === 'sort amount down icon') {
+        this.doSort(false);
+      }
+    }
+
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -73,10 +111,10 @@ export class CharacterSearch extends Component {
      *         limit is 100. For now I'll keep it like this because it's sick
     */
     if (this.state.fieldValue.includes(prevState.fieldValue) &&
-        this.state.fieldValue.length > prevState.fieldValue.length &&
-        prevState.fieldValue.length >= 1) {
-          // console.log('changing');
-        this.shouldGET = false;
+      this.state.fieldValue.length > prevState.fieldValue.length &&
+      prevState.fieldValue.length >= 1) {
+      // console.log('changing');
+      this.shouldGET = false;
     } else {
       this.shouldGET = true;
     }
@@ -85,12 +123,18 @@ export class CharacterSearch extends Component {
   render() {
     return (
       <div className='Character-searcher'>
-        <Input className="App-input" size='small' label={ this.baseUrl } 
-                 placeholder='Search...' onChange={ this.onChangeHandler }/>
-        <Button className="Get-button" onClick={ this.getInfo } >
-            GET
-        </Button>
-        <CharacterList list={ this.state.results } />
+        <div className='search-stuff'>
+          <Input className="App-input" size='small' label={this.baseUrl}
+          placeholder='Search...' onChange={this.onChangeHandler} />
+        
+          <Button icon onClick={this.onClickHandler}>
+            <Icon name='sort amount up' />
+          </Button>
+          <Button icon onClick={this.onClickHandler}>
+            <Icon name='sort amount down' />
+          </Button>
+        </div>
+        <CharacterList list={this.state.results} />
       </div>
     )
   }

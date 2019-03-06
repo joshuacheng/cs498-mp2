@@ -7,3 +7,9 @@
 .Get-button {
     margin: 10px !important; /* important b/c semantic-ui overrides this for some reason */
 }
+
+.search-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
