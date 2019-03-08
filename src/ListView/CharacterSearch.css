@@ -13,3 +13,7 @@
     flex-direction: row;
     align-items: center;
 }
+
+.App-input {
+    margin: 5px;
+}

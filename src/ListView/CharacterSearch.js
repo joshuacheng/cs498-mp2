@@ -26,6 +26,8 @@ export class CharacterSearch extends Component {
   constructor(props) {
     super(props);
 
+    this.baseUrl = 'https://gateway.marvel.com/v1/public/characters';
+
     this.state = {
       name: "",
       results: [],
@@ -47,7 +49,7 @@ export class CharacterSearch extends Component {
   ]
 
   getInfo = () => {
-    let url = `${this.props.baseUrl}?nameStartsWith=${this.state.fieldValue}&apikey=${PUBLIC_KEY}&limit=${LIMIT}`;
+    let url = `${this.baseUrl}?nameStartsWith=${this.state.fieldValue}&apikey=${PUBLIC_KEY}&limit=${LIMIT}`;
     axios.get(url).then(res => {
       if (res.status !== 200) {
         console.log(`bad request: Request Code ${res.status}`);
@@ -146,8 +148,7 @@ export class CharacterSearch extends Component {
     return (
       <div className='Character-searcher'>
         <div className='search-stuff'>
-          <Input className="App-input" size='small' label={this.baseUrl}
-          placeholder='Search a character...' onChange={this.onChangeHandler} />
+          <Input className="App-input" size='small' placeholder='Search a character...' onChange={this.onChangeHandler} />
         
           <Button icon onClick={this.onClickHandler}>
             <Icon name='sort amount up' />
