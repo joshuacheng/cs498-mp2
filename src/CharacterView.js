@@ -5,6 +5,23 @@ import axios from 'axios'
 
 export class CharacterView extends Component {
     
+    infoToDisplay = () => {
+        if (this.props.infoToDisplay === 'stories') {
+            return (
+                <p>Featured in { this.props.stories.available } stories</p>
+            )
+        } else if (this.props.infoToDisplay === 'series') {
+            return (
+                <p>Featured in { this.props.series.available } series</p>
+            )
+        } else {
+            console.log('Error: intoToDisplay is not one of the possible types');
+            return (
+                <p></p>
+            )
+        }
+    }
+
     render() {
 
         let imgPath = this.props.thumbnail.path;
@@ -15,6 +32,9 @@ export class CharacterView extends Component {
                 <Card.Content>
                     <Card.Header>{ this.props.name }</Card.Header>
                     {/* <Image src={ `${imgPath}/standard_fantastic.${extension}` } size='large'></Image> */}
+                </Card.Content>
+                <Card.Content extra>
+                    {this.infoToDisplay()}
                 </Card.Content>
             </Card>
         )

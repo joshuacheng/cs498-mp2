@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Input, Button, Icon } from 'semantic-ui-react'
+import { Input, Button, Icon, Dropdown } from 'semantic-ui-react'
 import axios from 'axios'
 
 import CharacterList from './CharList';
@@ -9,7 +9,7 @@ import './CharacterSearch.css';
 /** Rate limit: 3000 calls/day */
 const PUBLIC_KEY = "143409854ea7dad3962b62316a567d0d";
 // const PRIVATE_KEY = "c5ae7de3b072fa533e7d9563ae5c0f559c26b627";
-const LIMIT = 100;
+const LIMIT = 50;
 
 
 /**
@@ -30,20 +30,30 @@ export class CharacterSearch extends Component {
       name: "",
       results: [],
       fieldValue: "",
-      sortAscending: true /** When sortAscending false, we sort by descending */
+      sortAscending: false, /** When sortAscending false, we sort by descending */
+      sortValue: 'stories'
     }
   }
 
+  sortOptions = [
+    {
+      text: 'Number of stories featured in',
+      value: 'stories'
+    },
+    {
+      text: 'Number of series featured in',
+      value: 'series'
+    }
+  ]
+
   getInfo = () => {
     let url = `${this.props.baseUrl}?nameStartsWith=${this.state.fieldValue}&apikey=${PUBLIC_KEY}&limit=${LIMIT}`;
-
     axios.get(url).then(res => {
       if (res.status !== 200) {
         console.log(`bad request: Request Code ${res.status}`);
         return;
       }
 
-      // console.log(res.data.data.results);
       this.setState({
         results: res.data.data.results
       })
@@ -53,21 +63,23 @@ export class CharacterSearch extends Component {
   }
 
   onChangeHandler = (event) => {
+
+    /** rn assumes only thing using onChangeHandler is search bar */
     this.setState({
       fieldValue: event.target.value
     }, () => {
       if (this.state.fieldValue && this.state.fieldValue.length > 0) {
-        if (this.shouldGET) {
+        // if (this.shouldGET) {
           this.getInfo();
-        } else {
-          // Filter old results for starting with the new search string
-          const newResults = this.state.results.filter(char => {
-            return char.name.toLowerCase().startsWith(this.state.fieldValue.toLowerCase());
-          });
-          this.setState({
-            results: newResults
-          })
-        }
+        // } else {
+        //   // Filter old results for starting with the new search string
+        //   const newResults = this.state.results.filter(char => {
+        //     return char.name.toLowerCase().startsWith(this.state.fieldValue.toLowerCase());
+        //   });
+        //   this.setState({
+        //     results: newResults
+        //   })
+        // }
       }
     });
   }
@@ -84,7 +96,7 @@ export class CharacterSearch extends Component {
         sortAscending: true
       })
     } else {
-      console.log('error: contact author');
+      console.log('error: isAscending is neither true nor false; contact author');
     }
   }
 
@@ -92,7 +104,6 @@ export class CharacterSearch extends Component {
     /** React UI elements handle onclick differently than normal JS, hence the this.as */
     if (event.currentTarget.className === 'ui icon button') { 
       const command = event.currentTarget.firstChild.className; 
-      console.log(command);
       if (command === 'sort amount up icon') {
         this.doSort(true);
       } else if (command === 'sort amount down icon') {
@@ -120,6 +131,17 @@ export class CharacterSearch extends Component {
     }
   }
 
+  /**
+   * I made a separate onChange handler for the dropdown because getting the event class from a dropdown 
+   * is super inconsistent. Among the things it has told me event.currentTarget are are [item, selected item, 
+   * active selected item]
+   */
+  changeDropdown = (event, data) => {
+    this.setState({
+      sortValue: data.value
+    })
+  }
+
   render() {
     return (
       <div className='Character-searcher'>
@@ -134,7 +156,10 @@ export class CharacterSearch extends Component {
             <Icon name='sort amount down' />
           </Button>
         </div>
-        <CharacterList list={this.state.results} />
+        <Dropdown placeholder='Sort by...' fluid selection value={ this.state.sortValue } options={ this.sortOptions } 
+                                                           onChange={this.changeDropdown}/>
+        <CharacterList list={this.state.results} sortAscending={this.state.sortAscending} 
+          sortValue={ this.state.sortValue }/>
       </div>
     )
   }
