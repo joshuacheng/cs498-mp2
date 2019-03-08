@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { Input, Button, Icon, Dropdown } from 'semantic-ui-react'
 import axios from 'axios'
@@ -147,6 +148,9 @@ export class CharacterSearch extends Component {
   render() {
     return (
       <div className='Character-searcher'>
+
+        <Link to='/gallery'>Gallery View</Link>
+
         <div className='search-stuff'>
           <Input className="App-input" size='small' placeholder='Search a character...' onChange={this.onChangeHandler} />
         
@@ -164,10 +168,6 @@ export class CharacterSearch extends Component {
       </div>
     )
   }
-}
-
-CharacterSearch.propTypes = {
-  baseUrl: PropTypes.string
 }
 
 export default CharacterSearch

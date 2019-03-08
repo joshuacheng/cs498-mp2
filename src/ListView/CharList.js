@@ -42,8 +42,10 @@ export class CharList extends Component {
         return (
             <div className='character-list'>
                 { this.props.list.map((info) => (
-                    <CharacterView key={info.id} thumbnail={info.thumbnail} name={info.name} 
-                                   stories={info.stories} series={info.series} infoToDisplay={this.props.sortValue}/>
+                    // <CharacterView key={info.id} id={info.id} thumbnail={info.thumbnail} name={info.name} 
+                    //                stories={info.stories} series={info.series} infoToDisplay={this.props.sortValue}/>
+                
+                    <CharacterView key={info.id} id={info.id} info={info} infoToDisplay={this.props.sortValue}/>
                 )) }
             </div>
         )

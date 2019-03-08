@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import CharacterSearch from './ListView/CharacterSearch'
 import GalleryView from './GalleryView'
+import DetailView from './DetailView/DetailView'
 import './App.css'
 
 export class App extends Component {
@@ -16,8 +17,9 @@ export class App extends Component {
                 </div>
                 <Router>
                     <Switch>
-                        <Route exact path='/' component={CharacterSearch} />
                         <Route exact path='/gallery' component={GalleryView} />
+                        <Route exact path='/' component={CharacterSearch} />
+                        <Route exact path='/details/:charId' component={DetailView}/>
                     </Switch>
                 </Router>
             </div>
