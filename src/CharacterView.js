@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Icon, Image } from 'semantic-ui-react'
 
-import axios from 'axios'
 
 export class CharacterView extends Component {
     

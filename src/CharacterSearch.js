@@ -147,7 +147,7 @@ export class CharacterSearch extends Component {
       <div className='Character-searcher'>
         <div className='search-stuff'>
           <Input className="App-input" size='small' label={this.baseUrl}
-          placeholder='Search...' onChange={this.onChangeHandler} />
+          placeholder='Search a character...' onChange={this.onChangeHandler} />
         
           <Button icon onClick={this.onClickHandler}>
             <Icon name='sort amount up' />

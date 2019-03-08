@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CharacterView from './CharacterView'
 import PropTypes from 'prop-types'
+import './CharList.css'
 
 export class CharList extends Component {
 
@@ -39,7 +40,7 @@ export class CharList extends Component {
         })
 
         return (
-            <div>
+            <div className='character-list'>
                 { this.props.list.map((info) => (
                     <CharacterView key={info.id} thumbnail={info.thumbnail} name={info.name} 
                                    stories={info.stories} series={info.series} infoToDisplay={this.props.sortValue}/>

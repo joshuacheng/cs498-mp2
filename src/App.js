@@ -1,26 +1,20 @@
-import React, { Component } from 'react';
-import poke_logo from './assets/pokemon-logo.png';
-import CharacterSearch from './CharacterSearch';
-import './App.css';
+import React, { Component } from 'react'
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom'
 
-class App extends Component {
+import ListView from './ListView'
+import GalleryView from './GalleryView'
 
-  constructor(props) {
-    super(props);
-    this.baseUrl = 'https://gateway.marvel.com/v1/public/characters';
-  }
-
-
+export class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={poke_logo} className="App-logo" alt="logo" />
-          <CharacterSearch baseUrl={ this.baseUrl }/>
-        </header>
-      </div>
-    );
+        <Router>
+            <Switch>
+                <Route exact path='/' component={ListView}/>
+                <Route exact path='/gallery' component={GalleryView}/>
+           </Switch>
+        </Router>
+    )
   }
 }
 
-export default App;
+export default App
