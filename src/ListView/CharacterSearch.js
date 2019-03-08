@@ -116,23 +116,23 @@ export class CharacterSearch extends Component {
 
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    /** If the user is typing more letters of a character's name,
-     *  we shouldn't have to GET again because the list will be a strict
-     *  subset of the previous one. We'll just filter the list in onChangeHandler.
-     * REVIEW: Potential issue: because of LIMIT, some results might not show up on 
-     *         the first query, but they should after a second letter has been typed. Looks like max
-     *         limit is 100. For now I'll keep it like this because it's sick
-    */
-    if (this.state.fieldValue.includes(prevState.fieldValue) &&
-      this.state.fieldValue.length > prevState.fieldValue.length &&
-      prevState.fieldValue.length >= 1) {
-      // console.log('changing');
-      this.shouldGET = false;
-    } else {
-      this.shouldGET = true;
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   /** If the user is typing more letters of a character's name,
+  //    *  we shouldn't have to GET again because the list will be a strict
+  //    *  subset of the previous one. We'll just filter the list in onChangeHandler.
+  //    * REVIEW: Potential issue: because of LIMIT, some results might not show up on 
+  //    *         the first query, but they should after a second letter has been typed. Looks like max
+  //    *         limit is 100. For now I'll keep it like this because it's sick
+  //   */
+  //   if (this.state.fieldValue.includes(prevState.fieldValue) &&
+  //     this.state.fieldValue.length > prevState.fieldValue.length &&
+  //     prevState.fieldValue.length >= 1) {
+  //     // console.log('changing');
+  //     this.shouldGET = false;
+  //   } else {
+  //     this.shouldGET = true;
+  //   }
+  // }
 
   /**
    * I made a separate onChange handler for the dropdown because getting the event class from a dropdown 
