@@ -16,7 +16,7 @@ export class GalleryView extends Component {
     }
   }
 
-
+  //TODO: find a way to cache this info so i don't have to reload gallery pictures every time
   componentDidMount() {
     const baseUrl = 'https://gateway.marvel.com/v1/public/characters'
 
@@ -28,7 +28,6 @@ export class GalleryView extends Component {
         console.log(`bad request: Request Code ${res.status}`);
         return;
       }
-
       this.setState({
         charList: res.data.data.results
       })
@@ -49,9 +48,11 @@ export class GalleryView extends Component {
       return (
         <div>
           <Link to='/'>List View</Link>
-          <Image.Group itemsPerRow='5'>
+          <Image.Group>
             {this.state.charList.map(char => (
-              <Image src={`${char.thumbnail.path}/portrait_medium.${char.thumbnail.extension}`} rounded/>
+              <Link key={`${char.id}`} to={`/details/${char.id}`}>
+                <Image src={`${char.thumbnail.path}/portrait_medium.${char.thumbnail.extension}`} rounded />
+              </Link>
             ))}
           </Image.Group>
         </div>

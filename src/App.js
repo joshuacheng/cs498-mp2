@@ -17,8 +17,8 @@ export class App extends Component {
                 </div>
                 <Router>
                     <Switch>
-                        <Route exact path='/gallery' component={GalleryView} />
-                        <Route exact path='/' component={CharacterSearch} />
+                        <Route exact path='/gallery' render={() => <GalleryView />} />
+                        <Route exact path='/' render={() => <CharacterSearch/>} />
                         <Route exact path='/details/:charId' component={DetailView}/>
                     </Switch>
                 </Router>
