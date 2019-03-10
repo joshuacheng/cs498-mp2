@@ -5,10 +5,13 @@ import './CharList.css'
 
 export class CharList extends Component {
 
-    // constructor(props) {
-    //     super(props);
+    constructor(props) {
+        super(props);
 
-    // }
+        this.state = {
+            listIds: this.props.list.map(a => a.id)
+        }
+    }
 
     render() {
         console.log('rendering');
@@ -39,12 +42,13 @@ export class CharList extends Component {
             }
         })
 
+        console.log(this.state.listIds);
+
         return (
             <div className='character-list'>
                 { this.props.list.map((info) => (
                     // <CharacterView key={info.id} id={info.id} thumbnail={info.thumbnail} name={info.name} 
                     //                stories={info.stories} series={info.series} infoToDisplay={this.props.sortValue}/>
-                
                     <CharacterView key={info.id} id={info.id} info={info} infoToDisplay={this.props.sortValue}/>
                 )) }
             </div>
@@ -59,7 +63,9 @@ CharList.propTypes = {
             extension: PropTypes.string
         }),
         name: PropTypes.string
-    }))
+    })),
+    sortAscending: PropTypes.bool,
+    sortValue: PropTypes.string
 }
 
 export default CharList
