@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "2bf632fe369b6a40a576",
+    "revision": "1ee72c1e77caf94af96d",
     "url": "/cs498-mp2/static/css/main.d2ea7ac2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "b8b86fe3da5f7078756e",
-    "url": "/cs498-mp2/static/js/2.b8b86fe3.chunk.js"
+    "revision": "3d24d006c5a09479b429",
+    "url": "/cs498-mp2/static/js/2.3d24d006.chunk.js"
   },
   {
     "revision": "4468eddc1dca2810a789e885c896ec08",
@@ -44,8 +44,8 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "2bf632fe369b6a40a576",
-    "url": "/cs498-mp2/static/js/main.2bf632fe.chunk.js"
+    "revision": "1ee72c1e77caf94af96d",
+    "url": "/cs498-mp2/static/js/main.1ee72c1e.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
@@ -64,16 +64,16 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/icons.8e3c7f55.eot"
   },
   {
+    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
+    "url": "/cs498-mp2/static/media/icons.b87b9ba5.ttf"
+  },
+  {
     "revision": "13db00b7a34fee4d819ab7f9838cc428",
     "url": "/cs498-mp2/static/media/brand-icons.13db00b7.eot"
   },
   {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
     "url": "/cs498-mp2/static/media/brand-icons.c5ebe0b3.ttf"
-  },
-  {
-    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
-    "url": "/cs498-mp2/static/media/icons.b87b9ba5.ttf"
   },
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
@@ -84,11 +84,11 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "b8b86fe3da5f7078756e",
+    "revision": "3d24d006c5a09479b429",
     "url": "/cs498-mp2/static/css/2.a8c24528.chunk.css"
   },
   {
-    "revision": "642a060d55bf887c10f1d6c3e598a811",
+    "revision": "d475d631fb6daf17e64b97e7b21014a0",
     "url": "/cs498-mp2/index.html"
   }
 ];
