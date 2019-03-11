@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/icons.0ab54153.woff2"
   },
   {
-    "revision": "fbe409b7fe79f0314603",
+    "revision": "2bf632fe369b6a40a576",
     "url": "/cs498-mp2/static/css/main.d2ea7ac2.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/brand-icons.a1a749e8.svg"
   },
   {
-    "revision": "094ceae7b151f96326a4",
-    "url": "/cs498-mp2/static/js/2.094ceae7.chunk.js"
+    "revision": "b8b86fe3da5f7078756e",
+    "url": "/cs498-mp2/static/js/2.b8b86fe3.chunk.js"
   },
   {
     "revision": "4468eddc1dca2810a789e885c896ec08",
@@ -44,16 +44,16 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/outline-icons.ad97afd3.ttf"
   },
   {
-    "revision": "fbe409b7fe79f0314603",
-    "url": "/cs498-mp2/static/js/main.fbe409b7.chunk.js"
-  },
-  {
-    "revision": "faff92145777a3cbaf8e7367b4807987",
-    "url": "/cs498-mp2/static/media/icons.faff9214.woff"
+    "revision": "2bf632fe369b6a40a576",
+    "url": "/cs498-mp2/static/js/main.2bf632fe.chunk.js"
   },
   {
     "revision": "e8c322de9658cbeb8a774b6624167c2c",
     "url": "/cs498-mp2/static/media/brand-icons.e8c322de.woff2"
+  },
+  {
+    "revision": "faff92145777a3cbaf8e7367b4807987",
+    "url": "/cs498-mp2/static/media/icons.faff9214.woff"
   },
   {
     "revision": "a046592bac8f2fd96e994733faf3858c",
@@ -68,12 +68,12 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/brand-icons.13db00b7.eot"
   },
   {
-    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
-    "url": "/cs498-mp2/static/media/icons.b87b9ba5.ttf"
-  },
-  {
     "revision": "c5ebe0b32dc1b5cc449a76c4204d13bb",
     "url": "/cs498-mp2/static/media/brand-icons.c5ebe0b3.ttf"
+  },
+  {
+    "revision": "b87b9ba532ace76ae9f6edfe9f72ded2",
+    "url": "/cs498-mp2/static/media/icons.b87b9ba5.ttf"
   },
   {
     "revision": "82f60bd0b94a1ed68b1e6e309ce2e8c3",
@@ -84,11 +84,11 @@ self.__precacheManifest = [
     "url": "/cs498-mp2/static/media/icons.962a1bf3.svg"
   },
   {
-    "revision": "094ceae7b151f96326a4",
+    "revision": "b8b86fe3da5f7078756e",
     "url": "/cs498-mp2/static/css/2.a8c24528.chunk.css"
   },
   {
-    "revision": "6b581db2971cbd60ce39a791ec854f97",
+    "revision": "642a060d55bf887c10f1d6c3e598a811",
     "url": "/cs498-mp2/index.html"
   }
 ];
