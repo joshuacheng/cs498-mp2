@@ -149,7 +149,7 @@ export class CharacterSearch extends Component {
     return (
       <div className='Character-searcher'>
 
-        <Link to='/gallery'>Gallery View</Link>
+        <Link to={process.env.PUBLIC_URL + '/gallery'}>Gallery View</Link>
 
         <div className='search-stuff'>
           <Input className="App-input" size='small' placeholder='Search a character...' onChange={this.onChangeHandler} />

@@ -31,7 +31,7 @@ export class CharacterView extends Component {
 
         return (
             <div>
-                <Link to={`/details/${this.props.id}`}>
+                <Link to={process.env.PUBLIC_URL + `/details/${this.props.id}`}>
                     <Card className='character-card'>
                         <Card.Content>
                             <Card.Header>{this.props.info.name}</Card.Header>

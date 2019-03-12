@@ -48,8 +48,8 @@ export class DetailView extends Component {
       return (
         <div className='detail-view'>
 
-          <Link to='/'>List View   </Link>| 
-          <Link to='/gallery'>   Gallery View</Link>
+          <Link to={process.env.PUBLIC_URL + '/'}>List View   </Link>| 
+          <Link to={process.env.PUBLIC_URL + '/gallery'}>   Gallery View</Link>
 
           <Card className='character-card'>
             <Image src={`${imgPath}/standard_fantastic.${extension}`} size='large'></Image>

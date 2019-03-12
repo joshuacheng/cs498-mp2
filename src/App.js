@@ -17,9 +17,9 @@ export class App extends Component {
                 </div>
                 <Router>
                     <Switch>
-                        <Route exact path='/gallery' render={() => <GalleryView />} />
-                        <Route exact path='/' render={() => <CharacterSearch/>} />
-                        <Route exact path='/details/:charId' component={DetailView}/>
+                        <Route exact path={process.env.PUBLIC_URL + '/gallery'} render={() => <GalleryView />} />
+                        <Route exact path={process.env.PUBLIC_URL + '/'} render={() => <CharacterSearch/>} />
+                        <Route exact path={process.env.PUBLIC_URL + '/details/:charId'} component={DetailView}/>
                     </Switch>
                 </Router>
             </div>

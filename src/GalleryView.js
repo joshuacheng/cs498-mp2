@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Image } from 'semantic-ui-react'
+import { Button, Image } from 'semantic-ui-react'
 import axios from 'axios'
+import './GalleryView.css'
 
 const PUBLIC_KEY = "143409854ea7dad3962b62316a567d0d";
 
@@ -12,7 +13,8 @@ export class GalleryView extends Component {
     super(props);
 
     this.state = {
-      charList: []
+      charList: [],
+      filterValue: 'all'
     }
   }
 
@@ -37,6 +39,14 @@ export class GalleryView extends Component {
     })
   }
 
+  clickHandler = e => {
+    console.log(e.target.value);
+
+    this.setState({
+      filterValue: e.target.value
+    })
+  }
+
   render() {
 
     if (this.state.charList === null) {
@@ -44,13 +54,31 @@ export class GalleryView extends Component {
         <h3>Loading...</h3>
       )
     } else {
-      // console.log(this.state.charList);
+      console.log(this.state.charList);
+      const filteredList = this.state.charList.filter(char => {
+        if (this.state.filterValue === 'all') {
+          return true;
+        } else if (this.state.filterValue === 'has image') {
+          return !char.thumbnail.path.endsWith('image_not_available');
+        } else if (this.state.filterValue === 'has desc') {
+          return char.description !== '';
+        }
+      })
+
       return (
         <div>
-          <Link to='/'>List View</Link>
+          <div className='header'>
+          <Link to={process.env.PUBLIC_URL + '/'}>List View</Link>
+
+          <div className='subheader'>
+            <Button value='all' onClick={ this.clickHandler }>All</Button>
+            <Button value='has image' onClick={ this.clickHandler }>Has Image</Button>
+            <Button value='has desc' onClick={ this.clickHandler }>Has Description</Button>
+          </div>
+          </div>
           <Image.Group>
-            {this.state.charList.map(char => (
-              <Link key={`${char.id}`} to={`/details/${char.id}`}>
+            {filteredList.map(char => (
+              <Link key={`${char.id}`} to={process.env.PUBLIC_URL + `/details/${char.id}`}>
                 <Image src={`${char.thumbnail.path}/portrait_medium.${char.thumbnail.extension}`} rounded />
               </Link>
             ))}
