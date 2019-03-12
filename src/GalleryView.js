@@ -54,7 +54,6 @@ export class GalleryView extends Component {
         <h3>Loading...</h3>
       )
     } else {
-      console.log(this.state.charList);
       const filteredList = this.state.charList.filter(char => {
         if (this.state.filterValue === 'all') {
           return true;
